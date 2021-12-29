@@ -36,12 +36,12 @@ namespace PokemonApp
             Pokemon newPokemon = new Pokemon(name, type);
             pokemonList.Add(newPokemon);    
         }
-        public void addTrainer(string name, int age, string hometown)
+        public void AddTrainer(string name, int age, string hometown)
         {
             Trainer newTrainer = new Trainer(name, age, hometown);
             trainerList.Add(newTrainer);
         }
-        public void addBreeder(string name, int age, string hometown)
+        public void AddBreeder(string name, int age, string hometown)
         {
             Breeder newBreeder = new Breeder(name, age, hometown);
             breederList.Add(newBreeder);
@@ -52,7 +52,7 @@ namespace PokemonApp
             Console.WriteLine("List of trainers:");
             for(int index = 0; index < trainers.Count; index++)
             {
-                Console.WriteLine($"{index + 1}. {trainers[index]}");
+                Console.WriteLine($"{index + 1}. Name: {trainers[index].GetName()} Age: {trainers[index].GetAge()} Hometown: {trainers[index].GetHometown()} ");
             }
         }
         public void PrintBreederList()
@@ -61,7 +61,7 @@ namespace PokemonApp
             Console.WriteLine("List of breeders:");
             for (int index = 0; index < breeders.Count; index++)
             {
-                Console.WriteLine($"{index + 1}. {breeders[index]}");
+                Console.WriteLine($"{index + 1}. Name: {breeders[index].GetName()} Age: {breeders[index].GetAge()} Hometown: {breeders[index].GetHometown()} ");
             }
         }
         public void PrintPokemonList()

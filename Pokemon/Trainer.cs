@@ -17,5 +17,17 @@ namespace PokemonApp
         {
 			pokemonList.Add(pokemon);
         }
+		public string GetName()
+        {
+			return this.name;
+        }
+		public int GetAge()
+		{
+			return this.age;
+		}
+		public string GetHometown()
+		{
+			return this.hometown;
+		}
 	}
 }
