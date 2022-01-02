@@ -15,7 +15,14 @@ namespace PokemonApp
             this.age = age; 
             this.hometown = hometown;
             pokemonList = new List<Pokemon>(); 
-        } 
+        }
+        public Breeder(string name, int age, string hometown, List<Pokemon> pokemonList)
+        {
+            this.name = name;
+            this.age = age;
+            this.hometown = hometown;
+            this.pokemonList = pokemonList;
+        }
         public void AddPokemon(Pokemon pokemon)
         {
             pokemonList.Add(pokemon);
@@ -31,6 +38,10 @@ namespace PokemonApp
         public string GetHometown()
         {
             return this.hometown;
+        }
+        public List<Pokemon> GetPokemonList()
+        {
+            return this.pokemonList;
         }
 
     }

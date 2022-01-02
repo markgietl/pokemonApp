@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace PokemonApp
 {
-    public enum PokemonType {Fire, Grass, Water, Flying, Dragon, Steel, Rock}
+    public enum PokemonType {Fire, Grass, Water, Flying, Dragon, Steel, Rock, Electric, Poison}
 
 }

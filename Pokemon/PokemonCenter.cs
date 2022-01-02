@@ -19,6 +19,13 @@ namespace PokemonApp
             trainerList = new List<Trainer>();  
             breederList = new List<Breeder>();
         }
+        public PokemonCenter(string town, List<Pokemon> pokemonList, List<Trainer> trainerList, List<Breeder> breederList)
+        {
+            this.town = town;
+            this.pokemonList = pokemonList;
+            this.trainerList = trainerList;
+            this.breederList = breederList;
+        }
         private List<Trainer> GetTrainerList()
         {
             return trainerList;
@@ -53,6 +60,12 @@ namespace PokemonApp
             for(int index = 0; index < trainers.Count; index++)
             {
                 Console.WriteLine($"{index + 1}. Name: {trainers[index].GetName()} Age: {trainers[index].GetAge()} Hometown: {trainers[index].GetHometown()} ");
+                Console.WriteLine("Pokemon List:");
+                foreach (Pokemon pokemon in trainers[index].GetPokemonList())
+                {
+                    Console.WriteLine($"Name:{pokemon.GetName()} Type: {pokemon.GetType()}");
+                }
+
             }
         }
         public void PrintBreederList()
@@ -62,6 +75,11 @@ namespace PokemonApp
             for (int index = 0; index < breeders.Count; index++)
             {
                 Console.WriteLine($"{index + 1}. Name: {breeders[index].GetName()} Age: {breeders[index].GetAge()} Hometown: {breeders[index].GetHometown()} ");
+                Console.WriteLine("Pokemon List:");
+                foreach (Pokemon pokemon in breeders[index].GetPokemonList())
+                {
+                    Console.WriteLine($"Name:{pokemon.GetName()} Type: {pokemon.GetType()}");
+                }
             }
         }
         public void PrintPokemonList()
