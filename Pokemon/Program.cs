@@ -12,34 +12,110 @@ namespace PokemonApp
         static List<Breeder> breederList = new List<Breeder>();
         static void Main(string[] args)
         {
-            LoadData(@"C:\Users\Mark\Documents\PokemonAppData.txt");
+            string filePath = @"C:\Users\Mark\Documents\PokemonAppData.txt";
+            LoadData(filePath);
+            Console.WriteLine("List of Pokemon centers:");
+            for (int index = 0;index < pokemonCenterList.Count;index++)
+            {
+                Console.WriteLine($"{index+1}. {pokemonCenterList[index].GetTown()}");
+            }
+            // NEED TO CHECK IF VALUE SUPPLIED BY USER IS AN INT AND IS IN RANGE
+            int inputPokemonCenter = Int32.Parse(Console.ReadLine())-1;
+            PokemonCenter center = pokemonCenterList[inputPokemonCenter];
+            Console.WriteLine($"Welcome to {center.GetTown()} pokemon center administration panel. What action would you like to perform?");
+            Console.WriteLine("1. Add trainer");
+            Console.WriteLine("2. Add breeder");
+            Console.WriteLine("Press any other key to exit.");
+            
+            string input = Console.ReadLine();
+            while (input == "1" || input == "2")
+            { 
+                switch (input)
+                {
+                    
+                }
+            }
             pokemonCenterList[0].PrintBreederList();
-
+            Save(filePath);
         }
 
         private static void LoadData(string dir)
         {
-
-
+            // TODO: check to see if file exists and is not empty, if it does, read. Else create file
             string[] lines = System.IO.File.ReadAllLines(dir);
-            foreach (string line in lines)
+            if (lines.Length > 0)
             {
-                string[] pokemonCenterData = line.Split(",");
-                foreach (string data in pokemonCenterData)
+                foreach (string line in lines)
                 {
-                    //Console.WriteLine(data + "\n");
-                    LoadPokemonCenterTown(data);
-                    LoadPokemonCenterPokemonList(data, pokemonList);
-                    LoadPokemonCenterTrainerList(data, trainerList);
-                    LoadPokemonCenterBreederList(data, breederList);
+                    if (line.Contains(","))
+                    {
 
 
+                        string[] pokemonCenterData = line.Split(",");
+                        foreach (string data in pokemonCenterData)
+                        {
+                            //Console.WriteLine(data + "\n");
+                            LoadPokemonCenterTown(data);
+                            LoadPokemonCenterPokemonList(data, pokemonList);
+                            LoadPokemonCenterTrainerList(data, trainerList);
+                            LoadPokemonCenterBreederList(data, breederList);
+                        }
+
+                        PokemonCenter center = new PokemonCenter(town, pokemonList, trainerList, breederList);
+                        pokemonCenterList.Add(center);
+                    }
                 }
-
-                PokemonCenter center = new PokemonCenter(town, pokemonList, trainerList, breederList);
-                pokemonCenterList.Add(center);
             }
 
+        }
+        private static void Save(string dir)
+        {
+            
+            foreach (PokemonCenter pokemonCenter in pokemonCenterList)
+            {
+                string pokemonCenterTown = $"town:{pokemonCenter.GetTown()}";
+                string pokemonCenterPokemonList = "pokemonCenterPokemonList: ";
+                string pokemonCenterBreederList = "breederList:";
+                string pokemonCenterTrainerList = "trainerList:";
+
+
+               
+               
+                //Getting pokemon center's pokemon list
+                foreach (Pokemon pokemon in pokemonCenter.GetPokemonList())
+                {
+                    string pokemonName = pokemon.GetName();
+                    string pokemonType = ((int)pokemon.GetType()).ToString();
+                    pokemonCenterPokemonList += $"name:{pokemonName}.PokemonType:{pokemonType}";
+                }
+               
+                
+                //Getting pokemon center's breeder list
+                foreach (Breeder breeder in pokemonCenter.GetBreederList())
+                {
+                    string breederName = breeder.GetName();
+                    int breederAge = breeder.GetAge();
+                    string breederHomeTown = breeder.GetHometown();
+                    string pokemonName = null;
+                    string pokemonType = null;
+                        foreach (Pokemon pokemon in breeder.GetPokemonList())
+                        {
+                            pokemonName = pokemon.GetName();
+                            pokemonType = ((int)pokemon.GetType()).ToString();
+                        }
+                    pokemonCenterBreederList += $"name:{breederName}.age:{breederAge}.home:{breederHomeTown}.breederPokemonList:name-{pokemonName} PokemonType-{pokemonType}$";
+                }
+               
+                
+                // Getting pokemon center's trainer list
+                foreach (Trainer trainer in pokemonCenter.GetTrainerList())
+                {
+                // TODO : yes
+                }
+                string pokemonCenterLine = $"{pokemonCenterTown},{pokemonCenterPokemonList},{pokemonCenterTrainerList},{pokemonCenterBreederList}";
+                Console.WriteLine(pokemonCenterLine);
+                System.IO.File.WriteAllText(dir, pokemonCenterLine);
+            }
         }
         private static void LoadPokemonCenterPokemonList(string data, List<Pokemon> pokemonList)
         {
@@ -48,10 +124,13 @@ namespace PokemonApp
                 string[] arr = data.Split(" ");
                 for (int i = 1; i < arr.Length; i++)
                 {
-                    string pokemonName = arr[i].Split(".")[0].Split(":")[1];
-                    PokemonType pokemonType = (PokemonType)Int32.Parse(arr[i].Split(".")[1].Split(":")[1]);
-                    Pokemon pokemon = new Pokemon(pokemonName, pokemonType);
-                    pokemonList.Add(pokemon);
+                    if (arr[i].Contains("."))
+                    {
+                        string pokemonName = arr[i].Split(".")[0].Split(":")[1];
+                        PokemonType pokemonType = (PokemonType)Int32.Parse(arr[i].Split(".")[1].Split(":")[1]);
+                        Pokemon pokemon = new Pokemon(pokemonName, pokemonType);
+                        pokemonList.Add(pokemon);
+                    }
 
                 }
             }

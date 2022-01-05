@@ -26,17 +26,21 @@ namespace PokemonApp
             this.trainerList = trainerList;
             this.breederList = breederList;
         }
-        private List<Trainer> GetTrainerList()
+        public List<Trainer> GetTrainerList()
         {
             return trainerList;
         }
-        private List<Pokemon> GetPokemonList()
+        public List<Pokemon> GetPokemonList()
         {
             return pokemonList;
         }
-        private List<Breeder> GetBreederList()
+        public List<Breeder> GetBreederList()
         {
             return breederList;
+        }
+        public string GetTown()
+        {
+            return town;
         }
         public void AddPokemon(string name, PokemonType type)
         {
