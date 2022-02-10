@@ -1,44 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PokemonApp
 {
-	public class Trainer : Person
-	{
-		private List<Pokemon> pokemonList;
-		public Trainer(string name, int age, string hometown)
-		{
-			this.name = name;
-			this.age = age;
-			this.hometown = hometown;
-			pokemonList = new List<Pokemon>();
-		}
-		public Trainer(string name, int age, string hometown, List<Pokemon> pokemonList)
-		{
-			this.name = name;
-			this.age = age;
-			this.hometown = hometown;
-			this.pokemonList = pokemonList;
-		}
-		public void AddPokemon(Pokemon pokemon)
+    public class Trainer : Person
+    {
+        private List<Pokemon> pokemonList;
+
+        public Trainer(string name, int age, string hometown)
         {
-			pokemonList.Add(pokemon);
+            this.name = name;
+            this.age = age;
+            this.hometown = hometown;
+            pokemonList = new List<Pokemon>();
         }
-		public string GetName()
+
+        public Trainer(string name, int age, string hometown, List<Pokemon> pokemonList)
         {
-			return this.name;
+            this.name = name;
+            this.age = age;
+            this.hometown = hometown;
+            this.pokemonList = pokemonList;
         }
-		public int GetAge()
-		{
-			return this.age;
-		}
-		public string GetHometown()
-		{
-			return this.hometown;
-		}
-		public List<Pokemon> GetPokemonList()
-		{
-			return this.pokemonList;
-		}
-	}
+
+        public void AddPokemon(Pokemon pokemon)
+        {
+            pokemonList.Add(pokemon);
+        }
+
+        public string GetName()
+        {
+            return this.name;
+        }
+
+        public int GetAge()
+        {
+            return this.age;
+        }
+
+        public string GetHometown()
+        {
+            return this.hometown;
+        }
+
+        public List<Pokemon> GetPokemonList()
+        {
+            return this.pokemonList;
+        }
+    }
 }
