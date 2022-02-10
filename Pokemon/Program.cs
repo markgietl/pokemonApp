@@ -211,7 +211,7 @@ namespace PokemonApp
                 string pokemonCenterLine = $"{pokemonCenterTown},{pokemonCenterPokemonList},{pokemonCenterTrainerList},{pokemonCenterBreederList}";
                 Console.WriteLine(pokemonCenterLine);
 
-                using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(System.IO.Path.Combine(@"../", "PokemonAppData.txt"), true))
+                using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(System.IO.Path.Combine(@"..\..\..\..\", "PokemonAppData.txt"), true))
                 {
                     outputFile.WriteLine(pokemonCenterLine + "\n");
                 }
