@@ -1,0 +1,1 @@
+town:paletTown:pokemonCenterPokemonList: trainerList:/breederList:/,

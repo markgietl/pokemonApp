@@ -13,7 +13,7 @@ namespace PokemonApp
 
         private static void Main(string[] args)
         {
-            string filePath = @"C:\Users\Mark\Documents\PokemonAppData.txt";
+            string filePath = @"..\..\..\..\..\pokemonApp\PokemonAppData.txt";
             LoadData(filePath);
 
             Console.WriteLine("Welcome. Please choose a center from the list or add a new center");
@@ -157,7 +157,7 @@ namespace PokemonApp
 
         private static void Save(string dir)
         {
-            using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(System.IO.Path.Combine(@"C:\Users\Mark\Documents\", "PokemonAppData.txt"), false))
+            using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(System.IO.Path.Combine(@"..\..\..\..\..\", "PokemonAppData.txt"), false))
             {
                 outputFile.WriteLine("");
             }
@@ -210,7 +210,7 @@ namespace PokemonApp
                 string pokemonCenterLine = $"{pokemonCenterTown},{pokemonCenterPokemonList},{pokemonCenterTrainerList},{pokemonCenterBreederList}";
                 Console.WriteLine(pokemonCenterLine);
 
-                using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(System.IO.Path.Combine(@"C:\Users\Mark\Documents\", "PokemonAppData.txt"), true))
+                using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(System.IO.Path.Combine(@"../", "PokemonAppData.txt"), true))
                 {
                     outputFile.WriteLine(pokemonCenterLine + "\n");
                 }
