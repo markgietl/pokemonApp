@@ -158,7 +158,7 @@ namespace PokemonApp
 
         private static void Save(string dir)
         {
-            using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(System.IO.Path.Combine(@"..\..\..\..\..\", "PokemonAppData.txt"), false))
+            using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(System.IO.Path.Combine(@"..\..\..\..\", "PokemonAppData.txt"), false))
             {
                 outputFile.WriteLine("");
             }
