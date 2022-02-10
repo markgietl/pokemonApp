@@ -13,7 +13,8 @@ namespace PokemonApp
 
         private static void Main(string[] args)
         {
-            string filePath = @"..\..\..\..\..\..\PokemonAppData.txt";
+            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string filePath = @"..\..\..\..\PokemonAppData.txt";
             LoadData(filePath);
 
             Console.WriteLine("Welcome. Please choose a center from the list or add a new center");
